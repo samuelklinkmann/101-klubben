@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var shotsTaken = 0;
 	function countdown( elementName, minutes, seconds ) {
 		var element, endTime, hours, mins, msLeft, time;
 
@@ -25,15 +26,23 @@ $(document).ready(function() {
 				}
 				element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
 				setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+				if(seconds === "00"){
+					shotsTaken++;
+					console.log(minutes);
+					var shotsLeft = minutes-shotsTaken;
+					$("#bottles h3").text(shotsTaken + " shottar nere,  " + shotsLeft +" kvar");
+					$("#bottles ul").append("<li></li>");
+				}
+
 			}
 		}
 		element = document.getElementById( elementName );
 		endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
 		updateTimer();
 	}
-
+	var minutes = 101;
 	$("#start").click(function() {
-		countdown( "countdown", $("#min").val(), $("#sec").val() );
+		countdown( "countdown", 101, 0 );
 		$("#footer").remove();
 	});
 

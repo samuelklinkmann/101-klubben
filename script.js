@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	function countdown( elementName, minutes, seconds ) {
 		var element, endTime, hours, mins, msLeft, time;
-
+		console.log(typeof(minutes));
 		function twoDigits( n ) {
 			return (n <= 9 ? "0" + n : n);
 		}
@@ -33,7 +33,7 @@ $(document).ready(function() {
 	}
 
 	$("#start").click(function() {
-		countdown( "countdown", $("#min").val(), $("#sec").val() );
+		countdown("countdown", 10, 0);
 		$("#footer").remove();
 	});
 
