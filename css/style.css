@@ -1,0 +1,47 @@
+body {
+    background-size: cover;
+    background-color:#eff1f5;
+    color:#4f5b66;
+}
+#countdown {
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
+	height:100px;
+}
+
+input {
+	background:transparent;
+	border:0;
+	width:100%;
+	color:#000;
+	text-align:center;
+}
+
+#footer {
+	position:absolute;
+	left:0;
+	right:0;
+	margin:auto;
+	bottom:20px;
+	padding:5px;
+	border-radius:10px;
+	background:#fff;
+	border:1px solid silver;
+	width:50%;
+}
+#footer a {
+	margin: 0 auto;
+	display:block;
+}
+input {
+	padding: 10px 0;
+}
+h1 {
+	font-size:10em;
+	text-align:center;
+	font-weight:normal;
+}
