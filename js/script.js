@@ -10,10 +10,10 @@ $(document).ready(function() {
 			msLeft = endTime - (+new Date);
 
 			if ( msLeft < 1000 ) {
-				var snd = new Audio("http://dl.dropboxusercontent.com/u/1552364/101/sound/redalert.mp3"); // buffers automatically when created
+				var snd = new Audio("sound/redalert.mp3"); // buffers automatically when created
 				snd.play();
 
-				$("body").css("background-image", "url(http://dl.dropboxusercontent.com/u/1552364/101/img/bg.gif)");
+				$("body").css("background-image", "url(img/bg.gif)");
 				element.remove();
 			} else {
 				time = new Date( msLeft );
@@ -21,7 +21,7 @@ $(document).ready(function() {
 				mins = time.getUTCMinutes();
 				var seconds = twoDigits( time.getUTCSeconds());
 				if(seconds === "05"){
-					var countdownSnd = new Audio("http://dl.dropboxusercontent.com/u/1552364/101/sound/drick.m4a");
+					var countdownSnd = new Audio("sound/drick.m4a");
 					countdownSnd.play();
 				}
 				element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
@@ -40,9 +40,9 @@ $(document).ready(function() {
 		endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
 		updateTimer();
 	}
-	var minutes = 101;
+	var configMinutes = 101;
 	$("#start").click(function() {
-		countdown( "countdown", 101, 0 );
+		countdown( "countdown", configMinutes, 0 );
 		$("#footer").remove();
 	});
 
