@@ -1,5 +1,8 @@
 $(document).ready(function() {
 	var shotsTaken = 0;
+    var snd = new Audio("sound/redalert.mp3"); // buffers automatically when created
+    var countdownSnd = new Audio("sound/drick.m4a");
+                     
 	function countdown( elementName, minutes, seconds ) {
 		var element, endTime, hours, mins, msLeft, time;
 
@@ -10,7 +13,6 @@ $(document).ready(function() {
 			msLeft = endTime - (+new Date);
 
 			if ( msLeft < 1000 ) {
-				var snd = new Audio("sound/redalert.mp3"); // buffers automatically when created
 				snd.play();
 
 				$("body").css("background-image", "url(img/bg.gif)");
@@ -21,7 +23,6 @@ $(document).ready(function() {
 				mins = time.getUTCMinutes();
 				var seconds = twoDigits( time.getUTCSeconds());
 				if(seconds === "05"){
-					var countdownSnd = new Audio("sound/drick.m4a");
 					countdownSnd.play();
 				}
 				element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
