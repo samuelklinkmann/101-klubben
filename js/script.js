@@ -2,13 +2,37 @@ $(document).ready(function() {
 	var shotsTaken = 0;
     var snd = new Audio("sound/redalert.mp3"); // buffers automatically when created
     var countdownSnd = new Audio("sound/drick.m4a");
-                     
+
 	function countdown( elementName, minutes, seconds ) {
 		var element, endTime, hours, mins, msLeft, time;
 
 		function twoDigits( n ) {
 			return (n <= 9 ? "0" + n : n);
 		}
+
+    function bottlesLeft(shotsLeft) {
+					// TODO: not hard coded
+					var bottlesInit = 13;
+					var bottleSize = 0.33;
+					var shotSize = 0.04;
+					var shotsOnTable = 4;
+					var shotsString = "shots";
+
+					if (shotsLeft <= shotsOnTable) {
+						shotsOnTable = shotsLeft;
+					}
+
+          if (shotsOnTable == 1) {
+            shotsString = "shot";
+          }
+
+          var beerLeft = (bottlesInit * bottleSize) - (shotsTaken * shotSize) -
+          (shotSize * shotsOnTable);
+
+					return (beerLeft / bottleSize).toFixed(2) + " öl kvar + " +
+          shotsOnTable + " " + shotsString	 + " på bordet";
+				}
+
 		function updateTimer() {
 			msLeft = endTime - (+new Date);
 
@@ -32,6 +56,7 @@ $(document).ready(function() {
 					console.log(minutes);
 					var shotsLeft = minutes-shotsTaken;
 					$("#bottles h3").text(shotsTaken + " shottar nere,  " + shotsLeft +" kvar");
+          $("#bottles h4").text("(" + bottlesLeft(shotsLeft) + ")");
 					$("#bottles ul").append("<li></li>");
 				}
 
